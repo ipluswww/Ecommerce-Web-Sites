@@ -1,0 +1,28 @@
+a:5:{i:0;s:1717:"Error in file: "D:\project\magento\test\magento1.9\app\code\core\Mage\Customer\sql\customer_setup\install-1.6.0.0.php" - SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'customer_entity' already exists, query was: CREATE TABLE `customer_entity` (
+  `entity_id` int UNSIGNED NOT NULL auto_increment COMMENT 'Entity Id' ,
+  `entity_type_id` smallint UNSIGNED NOT NULL default '0' COMMENT 'Entity Type Id' ,
+  `attribute_set_id` smallint UNSIGNED NOT NULL default '0' COMMENT 'Attribute Set Id' ,
+  `website_id` smallint UNSIGNED NULL COMMENT 'Website Id' ,
+  `email` varchar(255) NULL COMMENT 'Email' ,
+  `group_id` smallint UNSIGNED NOT NULL default '0' COMMENT 'Group Id' ,
+  `increment_id` varchar(50) NULL COMMENT 'Increment Id' ,
+  `store_id` smallint UNSIGNED NULL default '0' COMMENT 'Store Id' ,
+  `created_at` timestamp NOT NULL default 0 COMMENT 'Created At' ,
+  `updated_at` timestamp NOT NULL default 0 COMMENT 'Updated At' ,
+  `is_active` smallint UNSIGNED NOT NULL default '1' COMMENT 'Is Active' ,
+  PRIMARY KEY (`entity_id`),
+  INDEX `IDX_CUSTOMER_ENTITY_STORE_ID` (`store_id`),
+  INDEX `IDX_CUSTOMER_ENTITY_ENTITY_TYPE_ID` (`entity_type_id`),
+  INDEX `IDX_CUSTOMER_ENTITY_EMAIL_WEBSITE_ID` (`email`, `website_id`),
+  INDEX `IDX_CUSTOMER_ENTITY_WEBSITE_ID` (`website_id`),
+  CONSTRAINT `FK_CUSTOMER_ENTITY_STORE_ID_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `FK_CUSTOMER_ENTITY_WEBSITE_ID_CORE_WEBSITE_WEBSITE_ID` FOREIGN KEY (`website_id`) REFERENCES `core_website` (`website_id`) ON DELETE SET NULL ON UPDATE CASCADE
+) COMMENT='Customer Entity' ENGINE=INNODB charset=utf8 COLLATE=utf8_general_ci";i:1;s:1036:"#0 D:\project\magento\test\magento1.9\app\code\core\Mage\Core\Model\Resource\Setup.php(644): Mage::exception('Mage_Core', 'Error in file: ...')
+#1 D:\project\magento\test\magento1.9\app\code\core\Mage\Core\Model\Resource\Setup.php(421): Mage_Core_Model_Resource_Setup->_modifyResourceDb('install', '', '1.6.2.0.5')
+#2 D:\project\magento\test\magento1.9\app\code\core\Mage\Core\Model\Resource\Setup.php(327): Mage_Core_Model_Resource_Setup->_installResourceDb('1.6.2.0.5')
+#3 D:\project\magento\test\magento1.9\app\code\core\Mage\Core\Model\Resource\Setup.php(235): Mage_Core_Model_Resource_Setup->applyUpdates()
+#4 D:\project\magento\test\magento1.9\app\code\core\Mage\Core\Model\App.php(428): Mage_Core_Model_Resource_Setup::applyAllUpdates()
+#5 D:\project\magento\test\magento1.9\app\code\core\Mage\Core\Model\App.php(354): Mage_Core_Model_App->_initModules()
+#6 D:\project\magento\test\magento1.9\app\Mage.php(683): Mage_Core_Model_App->run(Array)
+#7 D:\project\magento\test\magento1.9\index.php(83): Mage::run('', 'store')
+#8 {main}";s:3:"url";s:60:"/magento/test/magento1.9/index.php/install/wizard/installDb/";s:11:"script_name";s:34:"/magento/test/magento1.9/index.php";s:4:"skin";s:7:"default";}
